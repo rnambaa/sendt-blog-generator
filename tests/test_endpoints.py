@@ -1,10 +1,6 @@
 import sys
 from pathlib import Path
-# add root dir 
-root = str(Path(__file__).parent.parent)
-print(root)
-sys.path.insert(0, root)
-
+# sys.path.insert(0, str(Path(__file__).parent.parent))
 from fastapi.testclient import TestClient
 import pytest
 from api.main import app
