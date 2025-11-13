@@ -17,11 +17,11 @@ This project is a **blog generation system** designed to help companies quickly 
 ├── pdfs/
 │   ├── company_description.pdf
 │   └── example_post.pdf
-├── src
+├── src/
 │   ├── blog_generation.py
 │   ├── chunking.py
 │   └── config/
-└── tests
+└── tests/
     └── test_endpoints.py
 ├── Dockerfile
 ├── docker-compose.yaml
