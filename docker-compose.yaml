@@ -8,6 +8,7 @@ services:
       - ollama
     environment:
       - OLLAMA_HOST=http://ollama:11434
+      # - OLLAMA_HOST=http://host.docker.internal:11434
     volumes:
       - .:/app
     restart: unless-stopped

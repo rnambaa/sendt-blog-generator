@@ -82,6 +82,50 @@ Confirm pulled models:
 docker exec -it ollama ollama list
 ```
 
+## NOTE: 
+
+### Running Ollama: Local vs Docker
+
+By default, the `docker-compose.yml` includes an `ollama` service so the blog generator can run fully containerized.  
+However, **on macOS**, Ollama containers cannot use MacOS Metal GPU due to Docker’s hardware abstraction limitations — all inference will fall back to **CPU-only**, which can be significantly slower and memory-heavy.
+
+For faster GPU-based inference, consider using a **local Ollama installation** to serve the models.
+
+#### Install up Ollama locally:
+
+```bash 
+brew install ollama
+```
+
+#### Serve Ollama locally: 
+
+1. Make sure Ollama is running locally:
+   ```bash
+   ollama serve
+   ```
+
+2. Pull ollama models 
+   ```bash
+   ollama pull mistral:latest \
+   ollama pull zongwei/gemma3-translator:4b
+   ```
+
+3. Change host variable in ```docker-compose.yaml```
+   ```yaml
+   environment:
+   - OLLAMA_HOST=http://host.docker.internal:11434
+   ```
+
+
+#### Run everything as usual:
+
+```bash
+docker compose up -d --build
+```
+
+
+
+
 # API Usage 
 The FastAPI service exposes two main endpoints on port 8080: one to set the generation tone and one to generate a blog post. 
 
