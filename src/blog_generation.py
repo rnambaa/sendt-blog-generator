@@ -1,4 +1,3 @@
-# TODO: figure out later 
 import os 
 import sys
 from pathlib import Path
